@@ -11,19 +11,19 @@ nltk.download('wordnet')
 stopwords.words('spanish')
 
 with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/alvaro_uribe_speeches_2007_2010.txt') as response:
-  with tempfile.NamedTemporaryFile(delete=False) as texto:
-        shutil.copyfileobj(response, textos)
+  with tempfile.NamedTemporaryFile(delete=False) as textos:
+    shutil.copyfileobj(response, textos)
 
 with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt') as response:
   with tempfile.NamedTemporaryFile(delete=False) as nombres:
-        shutil.copyfileobj(response, nombres)
+    shutil.copyfileobj(response, nombres)
 
 
 data = pd.read_csv(nombres.name, sep='\t', header = None)
 data.columns = ['body_text']
 data.head()
 # Opens previously imported file from local machine and prints its content
-rawData = open(texto.name).read()
+rawData = open(textos.name).read()
 #print (rawData[0:500])
 
 #Eliminates empty spaces and prints list items in new lines
@@ -83,8 +83,7 @@ print(word_inlist[22320])
 #len(word_inlist[22320]) > 1
 
 word_inlist = data['body_text_nostop']
-sp_names = open('Spanish_Names.csv').read()
-
+sp_names = open(textos.name).read()
 name_list = []
 
 for line in word_inlist:
@@ -130,11 +129,9 @@ for line in word_inlist:
 #fixed_list = " ".join(name_list).split()
 for sublst in name_list:
               for item in sublst:
-                print item,        # note the ending ','
-              print
+                print(item,)        # note the ending ','
 
 for sublst in name_list:
   for item in sublst:
-    print item,        # note the ending ','
-  print
+    print(item,)        # note the ending ','
 
