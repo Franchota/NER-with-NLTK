@@ -1,3 +1,4 @@
+import os
 import nltk
 import string
 import re
@@ -10,20 +11,22 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 stopwords.words('spanish')
 
-with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/alvaro_uribe_speeches_2007_2010.txt') as response:
-  with tempfile.NamedTemporaryFile(delete=False) as textos:
-    shutil.copyfileobj(response, textos)
+if 'alvaro_uribe_speeches_2007_2010.txt' not in os.listdir('./assets'):
+  with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/alvaro_uribe_speeches_2007_2010.txt') as response:
+    with open('./assets/alvaro_uribe_speeches_2007_2010.txt','w') as textos:
+      shutil.copyfileobj(response, textos)
 
-with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt') as response:
-  with tempfile.NamedTemporaryFile(delete=False) as nombres:
-    shutil.copyfileobj(response, nombres)
+if 'nombres.txt' not in os.listdir('./assets'):
+  with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt') as response:
+    with open('./assets/nombres.txt','w') as nombres:
+      shutil.copyfileobj(response, nombres)
 
 
-data = pd.read_csv(nombres.name, sep='\t', header = None)
+data = pd.read_csv('./assets/nombres.txt', sep='\t', header = None)
 data.columns = ['body_text']
 data.head()
 # Opens previously imported file from local machine and prints its content
-rawData = open(textos.name).read()
+rawData = open('./assets/alvaro_uribe_speeches_2007_2010.txt').read()
 #print (rawData[0:500])
 
 #Eliminates empty spaces and prints list items in new lines
@@ -83,7 +86,7 @@ print(word_inlist[22320])
 #len(word_inlist[22320]) > 1
 
 word_inlist = data['body_text_nostop']
-sp_names = open(textos.name).read()
+sp_names = open('./assets/nombres.txt').read()
 name_list = []
 
 for line in word_inlist:
