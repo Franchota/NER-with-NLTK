@@ -7,20 +7,25 @@ import pandas as pd
 import urllib.request
 import shutil
 import tempfile
+import subprocess
+import platform
+from tkinter.filedialog import askopenfilename
+
+
 nltk.download('stopwords')
 nltk.download('wordnet')
 stopwords.words('spanish')
 
-if 'alvaro_uribe_speeches_2007_2010.txt' not in os.listdir('./assets'):
-  with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/alvaro_uribe_speeches_2007_2010.txt') as response:
-    with open('./assets/alvaro_uribe_speeches_2007_2010.txt','w') as textos:
-      shutil.copyfileobj(response, textos)
+filename = askopenfilename()
+with open(filename, 'r') as f:
+  text = f.read()
+  print(text)
+
+
 
 if 'nombres.txt' not in os.listdir('./assets'):
-  with urllib.request.urlopen('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt') as response:
-    with open('./assets/nombres.txt','w') as nombres:
-      shutil.copyfileobj(response, nombres)
-
+  urllib.request.urlretrieve('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt','./assets/nombres.txt')
+  
 
 data = pd.read_csv('./assets/nombres.txt', sep='\t', header = None)
 data.columns = ['body_text']
