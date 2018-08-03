@@ -4,7 +4,6 @@ import string
 import re
 from nltk.corpus import stopwords
 import pandas as pd
-from pandas.compat import StringIO
 import urllib.request
 import shutil
 import tempfile
@@ -18,27 +17,13 @@ nltk.download('wordnet')
 stopwords.words('spanish')
 
 filename = askopenfilename()
-print(filename)
-with open(filename, 'r') as f:
-  text = f.read()
-  text = StringIO(text)
 
-#TODO fuzzy search 
-#TODO performace metric 
-
-if 'nombres.txt' not in os.listdir('./assets'):
-  urllib.request.urlretrieve('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt','./assets/nombres.txt')
+if 'nombres.txt' not in os.listdir('.'):
+  urllib.request.urlretrieve('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt','./nombres.txt')
   
 data = pd.read_csv(filename, sep='\t', header = None)
 data.columns = ['body_text']
 data.head()
-# Opens previously imported file from local machine and prints its content
-rawData = open('./assets/alvaro_uribe_speeches_2007_2010.txt').read()
-#print (rawData[0:500])
-
-#Eliminates empty spaces and prints list items in new lines
-parsedData = rawData.replace('\t', '\n').split('\n')
-parsedData[0:500]
 
 
 def remove_punct(text):
@@ -76,7 +61,7 @@ print(string.punctuation)
 sp_characters = string.punctuation + "“¡¿"
 print(sp_characters)
 
-word_inlist = data['body_text_tokenized']
+word_inlist = data['body_text_nostop']
 
 ' ' in word_inlist[17:]
 
@@ -93,7 +78,7 @@ print(word_inlist[22320])
 #len(word_inlist[22320]) > 1
 
 word_inlist = data['body_text_nostop']
-sp_names = open('./assets/nombres.txt').read()
+sp_names = open('./nombres.txt', encoding='UTF-8').read()
 name_list = []
 
 for line in word_inlist:
@@ -137,11 +122,14 @@ for line in word_inlist:
             #print('error: ', elem)
             
 #fixed_list = " ".join(name_list).split()
+#for sublst in name_list:
+#              for item in sublst:
+#                print(item,)        # note the ending ','
+
+#for sublst in name_list:
+#  for item in sublst:
+#    print(item,)        # note the ending ','
 for sublst in name_list:
               for item in sublst:
-                print(item,)        # note the ending ','
-
-for sublst in name_list:
-  for item in sublst:
-    print(item,)        # note the ending ','
-
+                print (item, )        # note the ending ','
+              print () 
