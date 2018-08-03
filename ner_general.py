@@ -4,6 +4,7 @@ import string
 import re
 from nltk.corpus import stopwords
 import pandas as pd
+from pandas.compat import StringIO
 import urllib.request
 import shutil
 import tempfile
@@ -17,17 +18,18 @@ nltk.download('wordnet')
 stopwords.words('spanish')
 
 filename = askopenfilename()
+print(filename)
 with open(filename, 'r') as f:
   text = f.read()
-  print(text)
+  text = StringIO(text)
 
-
+#TODO fuzzy search 
+#TODO performace metric 
 
 if 'nombres.txt' not in os.listdir('./assets'):
   urllib.request.urlretrieve('https://raw.githubusercontent.com/rrodrigue2498/NER-with-NLTK/master/assets/nombres.txt','./assets/nombres.txt')
   
-
-data = pd.read_csv('./assets/nombres.txt', sep='\t', header = None)
+data = pd.read_csv(filename, sep='\t', header = None)
 data.columns = ['body_text']
 data.head()
 # Opens previously imported file from local machine and prints its content
