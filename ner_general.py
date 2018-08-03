@@ -28,7 +28,7 @@ data.head()
 
 def remove_punct(text):
   sp_characters = string.punctuation + "¡¿"
-  text_nopunct = ''.join([char for char in text if char not in string.punctuation])
+  text_nopunct = ''.join([char for char in text if char not in sp_characters])
   return text_nopunct
 
 data["body_text_clean"] = data['body_text'].apply(lambda x: remove_punct(x))
