@@ -1,6 +1,7 @@
 import os
 import nltk
 import string
+import csv
 import re
 from nltk.corpus import stopwords
 import pandas as pd
@@ -28,7 +29,7 @@ data.head()
 
 def remove_punct(text):
   sp_characters = string.punctuation + "¡¿"
-  text_nopunct = ''.join([char for char in text if char not in string.punctuation])
+  text_nopunct = ''.join([char for char in text if char not in sp_characters])
   return text_nopunct
 
 data["body_text_clean"] = data['body_text'].apply(lambda x: remove_punct(x))
@@ -133,3 +134,10 @@ for sublst in name_list:
               for item in sublst:
                 print (item, )        # note the ending ','
               print () 
+with open('{}_nombres.csv'.format(filename.split('.')[0]), 'w') as f:
+ 
+  fieldnames = ['nombre']
+  writer = csv.DictWriter(f, fieldnames=fieldnames)
+  writer.writeheader()
+  for nombre in name_list:
+    writer.writerow({'nombre': nombre })
