@@ -1,3 +1,17 @@
+---
+title: |
+    Extracción de identificadores personales de textos históricos en español
+authors:
+- Rafael Rodriguez-Charris
+- Andrew Janco
+date: 2018-04-09
+reviewers:
+layout: lesson
+difficulty: advanced
+topics: ''
+abstract: ''  
+---
+
 Introducción
 ============
 
