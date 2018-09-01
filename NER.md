@@ -121,7 +121,7 @@ interfaz de línea de comando (Terminal en Max y símbolo del sistema en Windows
 en la linea de comando
 
 Mac o Linux:
-`python3 -m pip install --user virtualenv '
+`python3 -m pip install --user virtualenv`
 Windows:
 `py -m pip install --user virtualenv`
 
@@ -243,7 +243,7 @@ A continuación, describiremos cómo se logró recopilar y procesar esta gran va
 
 La mayor cantidad de nombres en nuestra lista proviene de DBpedia. Usando datos enlazados, es posible encontrar todos los nombres en Wikipedia y guardarlos en un archivo CSV. Lo hicimos usando el lenguaje de consulta SPARQL (http://es.dbpedia.org/sparql). Para más información sobre datos enlazados y SPARQL, consulte el siguiente tutorial encontrado en el Programming Historian:
 
-[Uso de SPARQL para acceder a los datos abiertos enlazados](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados)por Matthew Lincoln. 
+[Uso de SPARQL para acceder a los datos abiertos enlazados](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados) por Matthew Lincoln. 
 
 DBpedia solo arroja 10,000 resultados a la vez. Dada esta limitación, creamos consultas de nombre para cada letra en el alfabeto. En la mayoría de los casos, había menos de 10,000 nombres únicos, pero en otros, solo incluímos los 10,000 nombres como resultado. No obstante, se puede generar un conjunto más grande de nombres con consultas más específicas. Tenga en cuenta que usamos expresiones regulares (mencionadas previamente en la sección de *Conocimiento previo*) para seleccionar nombres por letra.
 
