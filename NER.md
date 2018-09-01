@@ -92,13 +92,13 @@ Durante la creación de este tutorial, enfrentamos varios retos que nos gustarí
   ​
 
 
-# Análisis y limpieza de texto#
+# Análisis y limpieza de texto #
 
 Pensando en la mejor forma de estructurar esta lección, hemos decidido dividir la lección en dos partes: análisis y limpieza de texto y extracción de entidades nombradas. En esta primera parte, vamos a preparar el archivo de texto plano que tenemos de muestra [agregar enlace al archivo aquí] antes de poder realizar exitosamente la extracción de nombres de personas del corpus textual.
 
 
 
-## Instalación de Python y pip##
+## Instalación de Python y pip ##
 
 - ### Instalar Python 3
 
@@ -108,10 +108,10 @@ En una Mac, abra la terminal desde Launchpad. En Windows, haga clic en Inicio y 
 
 Por lo tanto, continúe con el siguiente paso.
 
-Con Mac, Windows o máquina Linux, descargue Python3 desde este [enlace] (https://www.python.org/downloads/).
+Con Mac, Windows o máquina Linux, descargue Python3 desde este [enlace](https://www.python.org/downloads/).
 
-Se pueden encontrar más instrucciones en inglés [aquí] (https://docs.python.org/3.7/using/index.html).
-Puede encontrar una traducción de ese mismo documento usando Google Translate [aquí] (https://translate.google.com/translate?hl=es&sl=en&tl=es&u=https%3A%2F%2Fdocs.python.org%2F3. 7% 2Fusing% 2Findex.html)
+Se pueden encontrar más instrucciones en inglés [aquí](https://docs.python.org/3.7/using/index.html).
+Puede encontrar una traducción de ese mismo documento usando Google Translate [aquí](https://translate.google.com/translate?hl=es&sl=en&tl=es&u=https%3A%2F%2Fdocs.python.org%2F3. 7% 2Fusing% 2Findex.html)
 
 - ### Instalar pip
 
@@ -126,7 +126,7 @@ Windows:
 `py -m pip install --user virtualenv`
 
 Más detalles sobre pip se pueden encontrar en el tutorial,
-(Instalar módulos de Python con pip) (https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip).
+[Instalar módulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip).
 
 
 
@@ -243,7 +243,7 @@ A continuación, describiremos cómo se logró recopilar y procesar esta gran va
 
 La mayor cantidad de nombres en nuestra lista proviene de DBpedia. Usando datos enlazados, es posible encontrar todos los nombres en Wikipedia y guardarlos en un archivo CSV. Lo hicimos usando el lenguaje de consulta SPARQL (http://es.dbpedia.org/sparql). Para más información sobre datos enlazados y SPARQL, consulte el siguiente tutorial encontrado en el Programming Historian:
 
-[Uso de SPARQL para acceder a los datos abiertos enlazados] (https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados)por Matthew Lincoln. 
+[Uso de SPARQL para acceder a los datos abiertos enlazados](https://programminghistorian.org/es/lecciones/sparql-datos-abiertos-enlazados)por Matthew Lincoln. 
 
 DBpedia solo arroja 10,000 resultados a la vez. Dada esta limitación, creamos consultas de nombre para cada letra en el alfabeto. En la mayoría de los casos, había menos de 10,000 nombres únicos, pero en otros, solo incluímos los 10,000 nombres como resultado. No obstante, se puede generar un conjunto más grande de nombres con consultas más específicas. Tenga en cuenta que usamos expresiones regulares (mencionadas previamente en la sección de *Conocimiento previo*) para seleccionar nombres por letra.
 
@@ -271,19 +271,19 @@ FILTER REGEX(STR(?sur), "^Z") .
 
 Más información sobre expresiones regulares está disponible en:
 
- ["Comprensión de expresiones regulares" por Doug Knox] (https://programminghistorian.org/en/lessons/understanding-regular-expressions).
+ ["Comprensión de expresiones regulares" por Doug Knox](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
 
-También se usó el lenguaje Amigo de un amigo (*Friend of a Friend* en inglés) para identificar nombres en las entradas de DBpedia. El FOAF [givenName](http://xmlns.com/foaf/spec/#term_givenName) es el término más general que podríamos encontrar para identificar nombres. [Apellido] (http://xmlns.com/foaf/spec/#term_surname) se seleccionó sobre [nombre de familia] (http://xmlns.com/foaf/spec/#term_familyName) dado el número relativamente mayor de resultados en español. La lista final debe entenderse como el mejor esfuerzo para obtener tantos nombres únicos de DBpedia como fuera posible. Por favor, siéntase libre de descargar [nuestra lista](https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/.../nombres.txt) y modificarla de acuerdo a su proyecto o investigación.
+También se usó el lenguaje Amigo de un amigo (*Friend of a Friend* en inglés) para identificar nombres en las entradas de DBpedia. El FOAF [givenName](http://xmlns.com/foaf/spec/#term_givenName) es el término más general que podríamos encontrar para identificar nombres. [Apellido](http://xmlns.com/foaf/spec/#term_surname) se seleccionó sobre [nombre de familia](http://xmlns.com/foaf/spec/#term_familyName) dado el número relativamente mayor de resultados en español. La lista final debe entenderse como el mejor esfuerzo para obtener tantos nombres únicos de DBpedia como fuera posible. Por favor, siéntase libre de descargar [nuestra lista(https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/.../nombres.txt) y modificarla de acuerdo a su proyecto o investigación.
 
-Para ejecutar las consultas usted mismo, simplemente vaya a [es.dbpedia.org/sparql](http://es.dbpedia.org/sparql). A continuación, puede copiar y pegar las consultas anteriores en la interfaz de búsqueda. *Endpoints* similares están disponibles en [inglés] (https://dbpedia.org/sparql), [holandés] (http://nl.dbpedia.org/sparql), [griego] (http://el.dbpedia.org / sparql), [polaco] (http://pl.dbpedia.org/sparql)
+Para ejecutar las consultas usted mismo, simplemente vaya a [es.dbpedia.org/sparql](http://es.dbpedia.org/sparql). A continuación, puede copiar y pegar las consultas anteriores en la interfaz de búsqueda. *Endpoints* similares están disponibles en [inglés](https://dbpedia.org/sparql), [holandés](http://nl.dbpedia.org/sparql), [griego](http://el.dbpedia.org / sparql), [polaco](http://pl.dbpedia.org/sparql)
 
 - #### Conjuntos de datos publicados en la web ####
 
-Algunos de los nombres en nuestra lista provienen de una búsqueda web simple para encontrar conjuntos de datos existentes. En el sitio data.world, Alexander Cruz ha publicado [listas] (https://data.world/axtscz/spanish-first-name) de nombres masculinos y femeninos en español. Si bien la mayoría de ellos repiten nombres encontrados en los datos de DBpedia, aun así vale la pena ver qué datos están disponibles gratuitamente. 
+Algunos de los nombres en nuestra lista provienen de una búsqueda web simple para encontrar conjuntos de datos existentes. En el sitio data.world, Alexander Cruz ha publicado [listas](https://data.world/axtscz/spanish-first-name) de nombres masculinos y femeninos en español. Si bien la mayoría de ellos repiten nombres encontrados en los datos de DBpedia, aun así vale la pena ver qué datos están disponibles gratuitamente. 
 
  -  #### Datos del Centro Internacional para Investigaciones en Derechos Humanos (CIIDH) - Diccionario ####
 
-Dado que este tutorial se creó con el fin de apoyar un proyecto actual relacionado con una organización en Guatemala, usamos la base de datos del Centro Internacional para Investigaciones en Derechos Humanos (CIIDH) de dicho país. El conjunto de datos del CIIDH incluye varios datos sobre violaciones de derechos humanos en Guatemala durante el período 1960-1996. La lista es particularmente útil dado el gran número de nombres indígenas de la región en la base de datos. Los datos del CIIDH están disponibles gratuitamente como un archivo CSV en este [enlace] (https://hrdag.org/wp-content/uploads/2014/01/atv201.csv.zip).
+Dado que este tutorial se creó con el fin de apoyar un proyecto actual relacionado con una organización en Guatemala, usamos la base de datos del Centro Internacional para Investigaciones en Derechos Humanos (CIIDH) de dicho país. El conjunto de datos del CIIDH incluye varios datos sobre violaciones de derechos humanos en Guatemala durante el período 1960-1996. La lista es particularmente útil dado el gran número de nombres indígenas de la región en la base de datos. Los datos del CIIDH están disponibles gratuitamente como un archivo CSV en este [enlace](https://hrdag.org/wp-content/uploads/2014/01/atv201.csv.zip).
 Dichos datos del CIIDH contienen 13,838 nombres, 13,594 nombres paternos familiares y 8,505 apellidos maternos.
 
 -  #### Base de datos del Grupo de Apoyo Mutuo
@@ -299,7 +299,7 @@ Como parte de un proyecto para digitalizar los registros de la organización de 
 Para hacer las cosas lo más simples posible, hemos creado un cuaderno donde puede ejecutar el script
 sin tener que hacer ningún cambio en su computadora. No requiere más que una conexión a Internet y un navegador. Para acceder a nuestra computadora portátil, haga clic en el siguiente enlace.
 
-[Enlace a la versión del guión de Colab Notebook.] (Https://colab.research.google.com/drive/1HlAjZDW4OF68-PMtgWj-pDviGch71jZp#scrollTo=S-f7YGEJHvWw)
+[Enlace a la versión del guión de Colab Notebook.](Https://colab.research.google.com/drive/1HlAjZDW4OF68-PMtgWj-pDviGch71jZp#scrollTo=S-f7YGEJHvWw)
 
 A continuación, proporcionamos instrucciones sobre cómo descargar el script y ejecutarlo localmente en su computadora, si lo prefiere.
 
