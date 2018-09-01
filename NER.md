@@ -111,7 +111,6 @@ Por lo tanto, continúe con el siguiente paso.
 Con Mac, Windows o máquina Linux, descargue Python3 desde este [enlace](https://www.python.org/downloads/).
 
 Se pueden encontrar más instrucciones en inglés [aquí](https://docs.python.org/3.7/using/index.html).
-Puede encontrar una traducción de ese mismo documento usando Google Translate [aquí](https://translate.google.com/translate?hl=es&sl=en&tl=es&u=https%3A%2F%2Fdocs.python.org%2F3. 7% 2Fusing% 2Findex.html)
 
 - ### Instalar pip
 
